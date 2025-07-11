@@ -17,14 +17,16 @@
                     };
                 @endphp
                 <div class="flex flex-col items-center justify-center min-h-[200px]">
-                    <span class="inline-block mb-4 px-4 py-2 rounded-full font-semibold shadow-md text-base {{ $colorClass }}">
-                        {{ ucfirst($userType->value ?? $userType) }}
-                    </span>
                     <div class="text-2xl font-bold text-gray-800 dark:text-gray-100 mb-2">
                         Welcome, {{ auth()->user()->name }}
                     </div>
-                    <div class="text-lg text-gray-600 dark:text-gray-300">
+                    <div class="text-lg text-gray-600 dark:text-gray-300 mb-6">
                         You are logged in as <span class="font-semibold">{{ ucfirst($userType->value ?? $userType) }}</span>.
+                    </div>
+                    <div class="flex gap-6 mt-6">
+                        <a href="{{ route('products.index') }}" class="px-6 py-3 rounded-lg bg-blue-600 text-white font-semibold shadow hover:bg-blue-700 transition">Products</a>
+                        <a href="{{ route('orders.index') }}" class="px-6 py-3 rounded-lg bg-green-600 text-white font-semibold shadow hover:bg-green-700 transition">Orders</a>
+                        <a href="{{ route('customers.index') }}" class="px-6 py-3 rounded-lg bg-pink-600 text-white font-semibold shadow hover:bg-pink-700 transition">Customers</a>
                     </div>
                 </div>
             </div>
