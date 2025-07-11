@@ -16,6 +16,17 @@
             <x-input-error :messages="$errors->get('email')" class="mt-2" />
         </div>
 
+        <!-- User Type Dropdown -->
+        <div class="mt-4">
+            <x-input-label for="user_type" :value="__('Register as')" />
+            <select id="user_type" name="user_type" class="block mt-1 w-full rounded dark:bg-gray-900 border-gray-300 dark:border-gray-700 text-gray-900 dark:text-gray-100 shadow-sm focus:ring-indigo-500 dark:focus:ring-indigo-600 dark:focus:ring-offset-gray-800">
+                <option value="influencer">Influencer</option>
+                <option value="supplier">Supplier</option>
+                <option value="admin">Admin</option>
+            </select>
+            <x-input-error :messages="$errors->get('user_type')" class="mt-2" />
+        </div>
+
         <!-- Password -->
         <div class="mt-4">
             <x-input-label for="password" :value="__('Password')" />
