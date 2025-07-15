@@ -29,7 +29,7 @@ class IntegrationController extends Controller
 
         $user = $request->user();
 
-        Integration::firstOrCreate(
+        $integration = Integration::firstOrCreate(
             [
                 'user_id' => $user->id,
                 'platform' => $validated['platform'],
@@ -40,6 +40,14 @@ class IntegrationController extends Controller
             ]
         );
 
-        return redirect()->route('dashboard')->with('success', 'Integration saved!');
+        if ($integration->wasRecentlyCreated) {
+            $message = 'Integration successfully created!';
+            $status = 'success';
+        } else {
+            $message = 'Integration already exists.';
+            $status = 'warning';
+        }
+
+        return redirect()->route('dashboard')->with($status, $message);
     }
 }

@@ -9,6 +9,12 @@
             {{ session('success') }}
         </div>
     @endif
+    
+    @if (session('warning'))
+        <div class="mb-4 p-4 bg-yellow-100 text-yellow-800 rounded">
+            {{ session('warning') }}
+        </div>
+    @endif
 
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
