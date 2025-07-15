@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\Support\Facades\Http;
 use App\Models\Integration;
 
 class IntegrationController extends Controller
@@ -52,7 +54,33 @@ class IntegrationController extends Controller
             $message = 'Integration already exists.';
             $status = 'warning';
         }
-
+        
         return redirect()->route('integrations.index')->with($status, $message);
+    }
+
+    public function sync(Request $request, Integration $integration) : \Illuminate\View\View {
+        $access_token = $integration->access_token;
+        $url = config('services.shopify.url').'/admin/api/2024-04/products.json';
+        // Code to take the above access token and then hit the shopify post api for fetching the api
+        if ($integration->platform === 'Shopify') {
+            $response = Http::withHeaders([
+                'X-Shopify-Access-Token' => $access_token,
+                'Accept' => 'application/json'
+            ])->get($url);
+            
+            $error = '';
+            if($response->successful()){
+                $products = $response->json();
+            }else{
+                $error = $response->body();
+            }
+        } elseif ($platform === 'WooCommerce') {
+            // Call WooCommerce sync logic
+        }
+        
+        return view('integrations.products', [
+            'products' => $products,
+            'error' => $error,
+        ]);
     }
 }

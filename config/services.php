@@ -35,4 +35,8 @@ return [
         ],
     ],
 
+    'shopify' => [
+        'url' => env('SHOPIFY_URL')
+    ]
+
 ];

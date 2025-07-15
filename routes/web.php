@@ -23,6 +23,7 @@ Route::middleware(['auth'])->group(function () {
     
     Route::get('integrations', [App\Http\Controllers\IntegrationController::class, 'index'])->name('integrations.index');
     Route::get('integrations/create', [App\Http\Controllers\IntegrationController::class, 'create'])->name('integrations.create');
+    Route::post('integrations/{integration}/sync', [App\Http\Controllers\IntegrationController::class, 'sync'])->name('integrations.sync');
     Route::post('integrations', [App\Http\Controllers\IntegrationController::class, 'store'])->name('integrations.store');
 });
 

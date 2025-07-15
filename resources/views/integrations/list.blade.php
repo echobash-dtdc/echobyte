@@ -41,15 +41,12 @@
                                     <td class="py-2 px-4 border-b">{{ $integration->domain }}</td>
                                     <td class="py-2 px-4 border-b">Not Synced</td>
                                     <td class="py-2 px-4 border-b">
-                                        {{-- Uncomment and implement sync logic as needed --}}
-                                        {{--
                                         <form action="{{ route('integrations.sync', $integration) }}" method="POST">
                                             @csrf
                                             <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">
                                                 Sync Now
                                             </button>
                                         </form>
-                                        --}}
                                     </td>
                                 </tr>
                             @empty
