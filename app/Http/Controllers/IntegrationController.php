@@ -7,6 +7,11 @@ use App\Models\Integration;
 
 class IntegrationController extends Controller
 {
+    public function index(Request $request){
+        $integrations = Integration::where('user_id',$request->user()->id)->get();
+        return view('integrations.list',['integrations' => $integrations]);
+    }
+
     public function create()
     {
         $integrations = [
@@ -48,6 +53,6 @@ class IntegrationController extends Controller
             $status = 'warning';
         }
 
-        return redirect()->route('dashboard')->with($status, $message);
+        return redirect()->route('integrations.index')->with($status, $message);
     }
 }
