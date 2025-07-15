@@ -1,9 +1,11 @@
-<x-app-layout>
-    <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
-            {{ __('Dashboard') }}
-        </h2>
-    </x-slot>
+@extends('layouts.app')
+@section('header')
+    <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
+        {{ __('Dashboard') }}
+    </h2>
+@endsection
+
+@section('content')
     @if (session('success'))
         <div class="mb-4 p-4 bg-green-100 text-green-800 rounded">
             {{ session('success') }}
@@ -43,4 +45,4 @@
             </div>
         </div>
     </div>
-</x-app-layout>
+@endsection
