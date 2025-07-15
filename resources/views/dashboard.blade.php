@@ -4,6 +4,11 @@
             {{ __('Dashboard') }}
         </h2>
     </x-slot>
+    @if (session('success'))
+        <div class="mb-4 p-4 bg-green-100 text-green-800 rounded">
+            {{ session('success') }}
+        </div>
+    @endif
 
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
@@ -26,7 +31,7 @@
                     <div class="flex gap-6 mt-6">
                         <!-- <a href="{{ route('products.index') }}" class="px-6 py-3 rounded-lg bg-blue-600 text-white font-semibold shadow hover:bg-blue-700 transition">Products</a>
                         <a href="{{ route('orders.index') }}" class="px-6 py-3 rounded-lg bg-green-600 text-white font-semibold shadow hover:bg-green-700 transition">Orders</a> -->
-                        <a href="{{ route('integrations.index') }}" class="px-6 py-3 rounded-lg bg-pink-600 text-white font-semibold shadow hover:bg-pink-700 transition">Create Source</a>
+                        <a href="{{ route('integrations.create') }}" class="px-6 py-3 rounded-lg bg-pink-600 text-white font-semibold shadow hover:bg-pink-700 transition">Create Source</a>
                     </div>
                 </div>
             </div>

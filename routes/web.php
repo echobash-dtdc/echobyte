@@ -20,7 +20,9 @@ Route::middleware('auth')->group(function () {
 Route::middleware(['auth'])->group(function () {
     Route::resource('products', App\Http\Controllers\ProductController::class);
     Route::resource('orders', App\Http\Controllers\OrderController::class);
-    Route::resource('integrations', App\Http\Controllers\IntegrationController::class);
+    // Only allow create and store for integrations
+    Route::get('integrations/create', [App\Http\Controllers\IntegrationController::class, 'create'])->name('integrations.create');
+    Route::post('integrations', [App\Http\Controllers\IntegrationController::class, 'store'])->name('integrations.store');
 });
 
 require __DIR__.'/auth.php';
